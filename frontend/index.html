@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fila de Cirurgia - Escoliose</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 p-6">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">🦴 Fila de Cirurgia de Escoliose</h1>
+
+    <div class="flex justify-end gap-3 mb-4">
+      <button id="btnNovoPaciente" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">
+        ➕ Novo Paciente
+      </button>
+      <button id="btnAtualizar" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow">
+        🔄 Atualizar Fila
+      </button>
+    </div>
+
+    <div id="alerta" class="hidden mb-4 p-4 rounded bg-yellow-100 text-yellow-800"></div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white shadow rounded-lg overflow-hidden">
+        <thead class="bg-blue-100 text-left text-sm uppercase font-semibold text-gray-600">
+          <tr>
+            <th class="px-4 py-3">#</th>
+            <th class="px-4 py-3">Nome</th>
+            <th class="px-4 py-3">Escore</th>
+            <th class="px-4 py-3">Prioridade</th>
+            <th class="px-4 py-3">Idade</th>
+            <th class="px-4 py-3">1ª Consulta</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-fila" class="text-sm divide-y divide-gray-200">
+          <!-- Linhas geradas via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal Novo Paciente -->
+  <div id="modalPaciente" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-xl p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">📝 Novo Paciente</h2>
+        <button id="fecharModal" class="text-gray-500 hover:text-gray-700">✖</button>
+      </div>
+
+      <form id="formPaciente" class="grid grid-cols-2 gap-4">
+        <input required name="prontuario" placeholder="Prontuário" class="col-span-1 p-2 border rounded">
+        <input required name="nome_completo" placeholder="Nome Completo" class="col-span-1 p-2 border rounded">
+        <select required name="sexo" class="col-span-1 p-2 border rounded">
+          <option value="">Sexo</option>
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+        </select>
+        <input required name="data_nascimento" type="date" class="col-span-1 p-2 border rounded">
+        <input required name="municipio" placeholder="Município" class="col-span-2 p-2 border rounded">
+        <input required name="medico_assistente" placeholder="Médico Assistente" class="col-span-2 p-2 border rounded">
+
+        <div class="col-span-2 flex justify-end gap-3">
+          <button type="button" id="cancelar" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">Cancelar</button>
+          <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* frontend/style.css */
+
+body {
+    font-family: system-ui, sans-serif;
+  }
+  
+  #btnAtualizar {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  #btnAtualizar:active {
+    transform: scale(0.97);
+  }
+  
+  #alerta {
+    transition: opacity 0.3s ease;
+  }
+  
+  tr:hover {
+    background-color: #f9fafb;
+  }
+  

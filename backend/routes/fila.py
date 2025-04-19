@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/v1", tags=["Fila"])
 
+
 @router.get("/fila", response_model=ResponseModel)
 def get_fila():
     try:

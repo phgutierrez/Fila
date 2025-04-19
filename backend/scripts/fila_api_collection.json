@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "a7c03c68-965f-4dac-a4c3-e8d0df2e5fa6",
+		"name": "Fila de Escoliose API",
+		"description": "Coleção para testar todas as rotas da API de Fila de Escoliose",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Listar todos os pacientes",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/pacientes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "pacientes"]
+						},
+						"description": "Retorna a lista de todos os pacientes cadastrados"
+					}
+				},
+				{
+					"name": "Buscar paciente por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/pacientes/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "pacientes", "1"]
+						},
+						"description": "Retorna os detalhes de um paciente específico pelo ID"
+					}
+				},
+				{
+					"name": "Criar novo paciente",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/pacientes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "pacientes"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prontuario\": \"0004\",\n    \"nome_completo\": \"Pedro Oliveira\",\n    \"sexo\": \"M\",\n    \"data_nascimento\": \"2011-07-05\",\n    \"municipio\": \"Santos\",\n    \"medico_assistente\": \"Dra. Ana Ferreira\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": "Cria um novo paciente no sistema"
+					}
+				}
+			],
+			"description": "Endpoints relacionados a pacientes"
+		},
+		{
+			"name": "Consultas",
+			"item": [
+				{
+					"name": "Listar consultas de um paciente",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/pacientes/1/consultas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "pacientes", "1", "consultas"]
+						},
+						"description": "Retorna a lista de todas as consultas de um paciente específico"
+					}
+				},
+				{
+					"name": "Buscar consulta por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/consultas/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "consultas", "1"]
+						},
+						"description": "Retorna os detalhes de uma consulta específica pelo ID"
+					}
+				},
+				{
+					"name": "Criar nova consulta",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/pacientes/1/consultas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "pacientes", "1", "consultas"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data_consulta\": \"2025-04-19\",\n    \"tipo_escoliose\": \"idiopatica\",\n    \"angulo_cobb\": 50,\n    \"progressao_6m\": 7.5,\n    \"risser\": 2,\n    \"menarca_status\": \"pre\",\n    \"comorbidades\": \"nenhuma\",\n    \"dor_funcional\": \"moderada\",\n    \"espera_cirurgica_meses\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": "Cria uma nova consulta para um paciente"
+					}
+				}
+			],
+			"description": "Endpoints relacionados a consultas"
+		},
+		{
+			"name": "Fila",
+			"item": [
+				{
+					"name": "Gerar fila",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8000/api/v1/fila",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "fila"]
+						},
+						"description": "Retorna a fila ordenada de pacientes com base nos critérios combinados"
+					}
+				}
+			],
+			"description": "Endpoints relacionados à fila de espera"
+		}
+	]
+}

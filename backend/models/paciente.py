@@ -4,7 +4,7 @@ from __future__ import annotations
 from sqlmodel import SQLModel, Field
 from typing import Optional, List, TYPE_CHECKING, ClassVar
 from datetime import date
-from pydantic import field_validator
+from pydantic import BaseModel, field_validator
 from sqlalchemy.orm import relationship, RelationshipProperty
 
 if TYPE_CHECKING:
@@ -20,7 +20,7 @@ class Paciente(SQLModel, table=True):
     municipio: str
     medico_assistente: str
 
-    # Usar ClassVar para indicar que este campo não é um campo de dados Pydantic
+    # Movendo o relacionamento para a classe Paciente, onde deve estar
     consultas: ClassVar[RelationshipProperty] = relationship(
         "Consulta", back_populates="paciente")
 
@@ -54,3 +54,14 @@ class Paciente(SQLModel, table=True):
         if not v.strip():
             raise ValueError("O município de residência deve ser informado.")
         return v
+
+
+class PacienteCreate(BaseModel):
+    prontuario: str
+    nome_completo: str
+    sexo: str
+    data_nascimento: date
+    municipio: str
+    medico_assistente: str
+
+    # Removendo o relacionamento daqui, pois ele pertence à classe Paciente
